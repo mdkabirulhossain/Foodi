@@ -1,0 +1,27 @@
+.header{
+    height: 35vw;
+    width: 100%;
+    margin: 30px auto;
+    /* background: url('../../assets/Header.jpg'); */
+    background-size: contain;
+    position: relative;
+
+
+}
+
+.header-container{
+    
+    /* max-width: 50%; */
+    bottom: 20%;
+    left: 6vw;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
