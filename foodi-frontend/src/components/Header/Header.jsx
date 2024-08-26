@@ -16,7 +16,7 @@ const Header = () => {
 
                 <h2 className='text-5xl font-bold '>Choose your favorite foods</h2>
                 <p className='text-2xl'>Chose from a diverse menu featuring a delectable array of dishes </p>
-                <button className='border-2 px-4 py-2 rounded-3xl bg-transparent cursor-pointer duration-200 bg-slate-200 text-black'>View Menu</button>
+                <button className='border-2 px-4 py-2 rounded-3xl cursor-pointer duration-200 bg-slate-200 text-black'>View Menu</button>
             </div>
         </div>
     );
