@@ -3,9 +3,11 @@ import { FaPlus } from "react-icons/fa";
 import { MdOutlineStar } from "react-icons/md";
 import { IoMdStarOutline } from "react-icons/io";
 import { FaMinus } from "react-icons/fa";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { StoreContext } from '../../context/StoreContext';
 const FoodItem = ({ id, name, image, description, price }) => {
-    const [itemCount, setItemCount] = useState(0)
+    
+    const{cartItems, setCartItems, addToCart, removeFromCart } = useContext(StoreContext);
     return (
         <div className=''>
             <div className='flex flex-col justify-center items-center border-2 bg-slate-200 shadow-md rounded-md mb-2'>
@@ -19,13 +21,13 @@ const FoodItem = ({ id, name, image, description, price }) => {
                 <div className='item-container flex flex-col justify-start p-2'>
                 <div>
                 {
-                        !itemCount?
-                            <button onClick={()=>setItemCount(prev => prev+1)} className='p-1 w-full text-white bg-orange-600 text-sm rounded-md mt-1 '>Add to Cart</button>
+                        !cartItems[id]?
+                            <button onClick={()=>addToCart(id)} className='p-1 w-full text-white bg-orange-600 text-sm rounded-md mt-1 '>Add to Cart</button>
                         
                         : <div className='flex justify-around items-center gap-x-3'>
-                            <FaMinus className='add text-orange-600' onClick={()=>setItemCount(prev => prev-1)} />
-                            <p className='text-orange-600'>{itemCount}</p>
-                            <FaPlus className='add text-orange-600' onClick={()=>setItemCount(prev => prev+1)} />
+                            <FaMinus className='add text-orange-600' onClick={()=>removeFromCart(id)} />
+                            <p className='text-orange-600'>{cartItems[id]}</p>
+                            <FaPlus className='add text-orange-600' onClick={()=>addToCart(id)} />
                         </div>
                     }
                 </div>
