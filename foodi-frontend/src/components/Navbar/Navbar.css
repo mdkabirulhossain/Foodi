@@ -2,3 +2,9 @@
     padding-bottom: 2px;
     border-bottom: 2px solid gray;
 }
+
+@media(max-width:600px){
+    .menu-list{
+        display: none;
+    }
+}
