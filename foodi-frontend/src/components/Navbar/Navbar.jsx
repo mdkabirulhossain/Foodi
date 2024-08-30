@@ -8,7 +8,7 @@ const Navbar = ({setLogin}) => {
     return (
         <div className='flex justify-between items-center pt-2 px-2'>
             <div>
-                <h1 className='text-2xl font-semibold text-orange-600'>FooDi</h1>
+               <Link to='/'><h1 className='text-2xl font-semibold text-orange-600'>FooDi</h1></Link> 
             </div>
             <ul className=' menu-list flex gap-x-10 '>
                 <Link to='/' onClick={()=>{setMenu("Home")}} className={menu === "Home"? "active" : ""}>Home</Link>
@@ -17,7 +17,7 @@ const Navbar = ({setLogin}) => {
             </ul>
             <div className='flex justify-center items-center gap-x-6 md:gap-x-8 lg:gap-x-10'>
                 <FaSearch></FaSearch>
-                <FaBitbucket></FaBitbucket>
+               <Link to="/cart"><FaBitbucket></FaBitbucket></Link> 
                 <div>
                     <button onClick={()=>setLogin(true)} className='border-2 rounded-3xl px-5 py-1 bg-transparent cursor-pointer duration-200 hover:bg-slate-200'>Sign In</button>
                 </div>
