@@ -45,16 +45,16 @@ const Cart = () => {
                         <div className='w-full mt-6'>
                             <div className='flex justify-between items-center'>
                                 <p>Subtotal</p>
-                                <p>${getTotalCartAmount()}</p>
+                                <p>${parseFloat(getTotalCartAmount()).toFixed(2)}</p>
                             </div>
                             <div className='flex justify-between items-center'>
                                 <p>Delivery Fee</p>
-                                <p>${3}</p>
+                                <p>${parseFloat(getTotalCartAmount() * 0.2).toFixed(2)}</p>
                             </div>
                             <hr className='border-1 border-orange-600' />
                             <div className='flex justify-between items-center'>
                                 <p className='font-semibold'>Total</p>
-                                <p>${getTotalCartAmount() + 3}</p>
+                                <p>${parseFloat(getTotalCartAmount() + getTotalCartAmount() * 0.2).toFixed(2)}</p>
                             </div>
                             <button onClick={()=>navigate('/order')} className='border-2 bg-orange-600 text-white p-1 mt-2 rounded-md text-sm w-full'>PROCEED TO CHECKOUT</button>
                         </div>
