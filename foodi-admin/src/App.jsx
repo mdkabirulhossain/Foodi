@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
+  const url = "http://localhost:5000";
 
   return (
     <div>
@@ -23,9 +23,9 @@ function App() {
         </div>
         <div className='flex-1'>
         <Routes>
-          <Route path='/add' element={<Add></Add>} />
-          <Route path='/list' element={<List></List>} />
-          <Route path='/order' element={<Order></Order>} />
+          <Route path='/add' element={<Add url={url}></Add>} />
+          <Route path='/list' element={<List url={url}></List>} />
+          <Route path='/order' element={<Order url={url}></Order>} />
         </Routes>
         </div>
       </div>

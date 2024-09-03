@@ -3,10 +3,10 @@ import './Add.css';
 import { IoIosCloudUpload } from "react-icons/io";
 import axios from 'axios'
 import { toast } from 'react-toastify';
-const Add = () => {
+const Add = ({url}) => {
     //Add all the food do yourself
     const [image, setImage] = useState(false);
-    const url ="http://localhost:5000";
+    
     const [data, setData] = useState({
         name: "",
         description: "",
