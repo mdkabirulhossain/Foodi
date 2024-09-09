@@ -1,15 +1,52 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Login.css';
 import { RxCross2 } from "react-icons/rx";
+import { StoreContext } from '../../context/StoreContext';
+import axios from "axios";
 
 const Login = ({ setLogin }) => {
-    const [currentState, setCurrentState] = useState("Log In")
+    const{url, setToken} = useContext(StoreContext)
+    const [currentState, setCurrentState] = useState("Log In");
+    const [data, setData] = useState({
+        name:"",
+        email:"",
+        password:"",
+    })
+
+    const onChangeHandler = (event)=>{
+        const name = event.target.name;
+        const value = event.target.value;
+        setData(data =>({...data, [name]:value}))
+
+    }
+
+    const onLogin = async(event) =>{
+        event.preventDefault();
+        let newUrl = url;
+        if(currentState === "Log In"){
+            newUrl +="/api/user/login"
+        }
+        else{
+            newUrl +="api/user/register"
+        }
+
+        const response = await axios.post(newUrl, data)
+        if(response.data.success){
+            setToken(response.data.token);
+            localStorage.setItem("token", response.data.token);
+            setLogin(false);
+        }
+        else{
+            alert(response.data.message)
+        }
+    }
+
     return (
         <div className="login hero bg-base-200 min-h-screen">
             <div className="hero-content">
 
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body">
+                    <form onSubmit={onLogin} className="card-body">
                         <div className='card-title flex justify-between'>
                             <h2 >{currentState}</h2>
                             <RxCross2 onClick={()=>setLogin(false)}></RxCross2>
@@ -20,7 +57,7 @@ const Login = ({ setLogin }) => {
                             <label className="">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="name" className="input input-bordered p-2" required />
+                            <input type="text" onChange={onChangeHandler} placeholder="name" name='name' value={data.name} className="input input-bordered p-2" required />
                         </div> :<></>
                         }
                         
@@ -28,17 +65,17 @@ const Login = ({ setLogin }) => {
                             <label className="">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered p-2" required />
+                            <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder="email" className="input input-bordered p-2" required />
                         </div>
                         <div className="form-control h-14">
                             <label className="">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered p-2" required />
+                            <input type="password" name='password' onChange={onChangeHandler} value={data.password} placeholder="password" className="input input-bordered p-2" required />
                         
                         </div>
                         <div className="form-control ">
-                            <button  className="bg-orange-600 rounded-md p-1 mt-2 text-white">{currentState === "Sign Up" ? "Crate account" : "Log In"}</button>
+                            <button type='submit'  className="bg-orange-600 rounded-md p-1 mt-2 text-white">{currentState === "Sign Up" ? "Crate account" : "Log In"}</button>
                         </div>
                         <div className="flex justify-center items-center">
                             <input type="checkbox" name="" id="" required />

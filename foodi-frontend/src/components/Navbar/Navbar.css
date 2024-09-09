@@ -2,7 +2,29 @@
     padding-bottom: 2px;
     border-bottom: 2px solid gray;
 }
+.nav-profile{
+    position: relative;
+}
+.nav-profile-dropdown{
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
 
+}
+
+.nav-profile:hover .nav-profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef;
+    /* margin-top: 1px; */
+    padding: 12px 25px;
+    border-radius: 5px;
+    border: 1px solid orangered;
+    outline: 2px solid white;
+    list-style: none;
+}
 @media(max-width:600px){
     .menu-list{
         display: none;

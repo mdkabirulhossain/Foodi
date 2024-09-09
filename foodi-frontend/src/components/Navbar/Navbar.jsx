@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Navbar.css'
 import { FaBitbucket, FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
+import { CgProfile } from "react-icons/cg";
+import { LuLogOut } from "react-icons/lu";
 
 const Navbar = ({setLogin}) => {
     const [menu, setMenu] = useState("Home");
+    const {token, setToken} = useContext(StoreContext);
+    const navigate = useNavigate();
+
+    const logOut = ()=>{
+        localStorage.removeItem("token");
+        setToken("");
+        navigate("/");
+    }
     return (
         <div className='flex justify-between items-center pt-2 px-2'>
             <div>
@@ -18,9 +29,20 @@ const Navbar = ({setLogin}) => {
             <div className='flex justify-center items-center gap-x-6 md:gap-x-8 lg:gap-x-10'>
                 <FaSearch></FaSearch>
                <Link to="/cart"><FaBitbucket></FaBitbucket></Link> 
+                
+                {!token? 
                 <div>
                     <button onClick={()=>setLogin(true)} className='border-2 rounded-3xl px-5 py-1 bg-transparent cursor-pointer duration-200 hover:bg-slate-200'>Sign In</button>
-                </div>
+                </div> :
+                    <div className='nav-profile '>
+                        <CgProfile></CgProfile>
+                        <ul className='nav-profile-dropdown'>
+                            <li className='cursor-pointer hover:text-orange-500'><div className='flex gap-2 items-center'><p><FaBitbucket></FaBitbucket></p><p>Orders</p></div></li>
+                            <hr className='border-black'/>
+                            <li onClick={logOut} className='cursor-pointer hover:text-orange-500'><div className='flex gap-2 items-center'><p><LuLogOut></LuLogOut> </p><p>LogOut</p></div></li>
+                        </ul>
+                    </div>
+                }
                 
             </div>
         </div>
