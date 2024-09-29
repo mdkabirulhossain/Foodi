@@ -45,6 +45,7 @@ const Add = ({url}) => {
         }else{
             toast.error(response.data.message);
         }
+
     }
     
     return (
@@ -74,11 +75,15 @@ const Add = ({url}) => {
                 </div>
                 <div className='flex gap-3 my-2'>
                     <label htmlFor="">Product category</label>
-                    <select  onChange={onChangeHandler} name='category' className='border'>
+                    <select value={data.category} onChange={onChangeHandler} name='category' className='border'>
                         <option value="Salad">Salad</option>
+                        <option value="Roll">Roll</option>
+                        <option value="Dessert">Dessert</option>
                         <option value="Cake">Cake</option>
                         <option value="Coffee">Coffee</option>
+                        <option value="Pasta">Pasta</option>
                         <option value="Pizza">Pizza</option>
+                        <option value="Lassi">Lassi</option>
                         <option value="Burger">Burger</option>
                         <option value="Juice">Juice</option>
                         <option value="Sandwich">Sandwich</option>
