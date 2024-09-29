@@ -29,7 +29,7 @@ const Login = ({ setLogin }) => {
             newUrl +="/api/user/login"
         }
         else{
-            newUrl +="api/user/register"
+            newUrl +="/api/user/register"
         }
 
         const response = await axios.post(newUrl, data)

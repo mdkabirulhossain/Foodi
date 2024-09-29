@@ -5,7 +5,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-    const { food_list, cartItems, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+    const { food_list, cartItems, removeFromCart, getTotalCartAmount, url } = useContext(StoreContext);
     const navigate = useNavigate();
     return (
         <div className='cart px-2 mt-8'>
@@ -25,7 +25,7 @@ const Cart = () => {
                         if (cartItems[item._id] > 0) {
                             return (
                                 <div className='grid grid-cols-6 place-items-center justify-items-center gap-3 p-2' key={index}>
-                                    <img src={item?.image} alt=""
+                                    <img src={ url+"/images/"+item.image} alt=""
                                         className='w-12 h-12 md:w-14 md:h-14'
                                     />
                                     <p className='text-center'>{item?.name}</p>
