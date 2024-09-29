@@ -3,10 +3,12 @@ import './Login.css';
 import { RxCross2 } from "react-icons/rx";
 import { StoreContext } from '../../context/StoreContext';
 import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = ({ setLogin }) => {
     const{url, setToken} = useContext(StoreContext)
     const [currentState, setCurrentState] = useState("Log In");
+    const[showPassword, setShowPassword] = useState(false);
     const [data, setData] = useState({
         name:"",
         email:"",
@@ -57,7 +59,7 @@ const Login = ({ setLogin }) => {
                             <label className="">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" onChange={onChangeHandler} placeholder="name" name='name' value={data.name} className="input input-bordered p-2" required />
+                            <input type="text" onChange={onChangeHandler} placeholder="name" name='name' value={data.name} className="border rounded-md p-1 w-full" required />
                         </div> :<></>
                         }
                         
@@ -65,13 +67,27 @@ const Login = ({ setLogin }) => {
                             <label className="">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder="email" className="input input-bordered p-2" required />
+                            <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder="email" className="border rounded-md p-1 w-full" required />
                         </div>
                         <div className="form-control h-14">
                             <label className="">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' onChange={onChangeHandler} value={data.password} placeholder="password" className="input input-bordered p-2" required />
+                            <div className='flex justify-between items-center'>
+                            <input type={showPassword? "text": "password"} name='password' onChange={onChangeHandler} value={data.password} placeholder="password" className="border rounded-md p-1 w-full" required />
+                            <div className='absolute right-10 cursor-pointer'>
+                                {
+                                    showPassword?
+                                    <FaEyeSlash onClick={()=>setShowPassword(false)}></FaEyeSlash>
+                                     :
+                                    <FaEye onClick={()=>setShowPassword(true)}></FaEye>
+                                    
+                                }
+                            
+                            </div>
+
+                            </div>
+                           
                         
                         </div>
                         <div className="form-control ">
