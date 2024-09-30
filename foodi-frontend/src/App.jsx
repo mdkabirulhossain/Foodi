@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer'
 import { useState } from 'react'
 import Login from './components/Login/Login'
 import Post from './pages/Post/Post'
+import Verify from './pages/Verify/Verify'
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -22,7 +23,7 @@ function App() {
         <Route path='/cart' element ={<Cart></Cart>}></Route>
         <Route path='/order' element ={<PlaceOrder></PlaceOrder>}></Route>
         <Route path='/post' element ={<Post url={url} ></Post>}></Route>
-
+        <Route path='/verify' element ={<Verify></Verify>} />
       </Routes>
       <Footer></Footer>
     </div>
