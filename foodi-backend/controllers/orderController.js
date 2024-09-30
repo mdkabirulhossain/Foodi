@@ -2,7 +2,7 @@ import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js"
 import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRETE_KEY)
+const stripe = new Stripe("sk_test_51Q4g9yKolp7yXE1xbePhZjHiHvFsNEEplNYux40FrBBF75jHdwcOq04XumnlsKAWVwCJQG1uL1gQAII3uOuUlLZO00sihKURyc")
 
 //placing user order for frontend
 const placeOrder = async (req, res)=>{
@@ -61,6 +61,32 @@ const placeOrder = async (req, res)=>{
     }
 }
 
+const verifyOrder = async(req, res)=>{
+    const{ orderId, success} = req.body;
+    try{
+        if(success =="true"){
+            await orderModel.findByIdAndUpdate(orderId,{payment:true});
+            res.json({
+                success:true,
+                message:"Payment Successful"
+            })
+        }
+        else{
+            await orderModel.findByIdAndDelete(orderId);
+            res.json({
+                success:false,
+                message:"Payment Unsuccessful"
+            })
+        }
+    }catch(error){
+        console.log("Error");
+        res.json({
+            success:false,
+            message:"Error"
+        })
+    }
+}
 export{
     placeOrder,
+    verifyOrder,
 }
