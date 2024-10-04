@@ -10,6 +10,7 @@ import { useState } from 'react'
 import Login from './components/Login/Login'
 import Post from './pages/Post/Post'
 import Verify from './pages/Verify/Verify'
+import MyOrders from './pages/MyOrders/MyOrders'
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -24,6 +25,7 @@ function App() {
         <Route path='/order' element ={<PlaceOrder></PlaceOrder>}></Route>
         <Route path='/post' element ={<Post url={url} ></Post>}></Route>
         <Route path='/verify' element ={<Verify></Verify>} />
+        <Route path='/myorders' element={<MyOrders></MyOrders>} />
       </Routes>
       <Footer></Footer>
     </div>
