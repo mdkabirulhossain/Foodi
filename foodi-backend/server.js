@@ -16,6 +16,11 @@ const port = process.env.PORT || 5000;
 
 //middleware
 app.use(cors());
+
+// //For hosting vercel
+// app.use(cors({
+//     origin:[""]
+// }))
 app.use(express.json());
 
 

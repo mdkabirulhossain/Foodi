@@ -1,9 +1,10 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js"
 import Stripe from "stripe"
+import 'dotenv/config'
 
-const stripe = new Stripe("sk_test_51Q4g9yKolp7yXE1xbePhZjHiHvFsNEEplNYux40FrBBF75jHdwcOq04XumnlsKAWVwCJQG1uL1gQAII3uOuUlLZO00sihKURyc")
-
+const stripe = new Stripe(process.env.STRIPE_SECRETE_KEY)
+// console.log(process.env.STRIPE_SECRETE_KEY)
 //placing user order for frontend
 const placeOrder = async (req, res)=>{
 
@@ -86,7 +87,27 @@ const verifyOrder = async(req, res)=>{
         })
     }
 }
+
+//front end user order
+const userOrders = async(req, res)=>{
+    try{
+        const orders = await orderModel.find({userId:req.body.userId});
+        res.json({
+            success:true,
+            data:orders
+        })
+
+    }catch(error){
+        console.log("Error");
+        res.json({
+            success:false,
+            message:"Error"
+        })
+    }
+}
+
 export{
     placeOrder,
     verifyOrder,
+    userOrders,
 }
