@@ -41,7 +41,7 @@ const Navbar = ({setLogin}) => {
                     <div className='nav-profile '>
                         <CgProfile className='w-8 h-5'></CgProfile>
                         <ul className='nav-profile-dropdown'>
-                            <li className='cursor-pointer hover:text-orange-500'><Link to="/cart"><div className='flex gap-2 items-center'><p><FaBitbucket ></FaBitbucket></p><p>Orders</p></div></Link></li>
+                            <li className='cursor-pointer hover:text-orange-500'><Link to="/myorders"><div className='flex gap-2 items-center'><p><FaBitbucket ></FaBitbucket></p><p>Orders</p></div></Link></li>
                             <hr className='border-black'/>
                             <li onClick={logOut} className='cursor-pointer hover:text-orange-500'><div className='flex gap-2 items-center'><p><LuLogOut></LuLogOut> </p><p>LogOut</p></div></li>
                         </ul>
