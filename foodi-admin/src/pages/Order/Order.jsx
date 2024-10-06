@@ -33,7 +33,7 @@ const Order = ({ url }) => {
 
     }, [])
     return (
-        <div className='border-l-2 border-black '>
+        <div className='border-l-2 border-black h-full'>
             <h2 className='text-3xl  font-extrabold ml-3 pt-4'>Order List</h2>
             <div className='order-list'>
                 {

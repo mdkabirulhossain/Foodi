@@ -31,7 +31,7 @@ const List = ({url}) => {
         }
     }
     return (
-        <div className='border-l-2 border-black'>
+        <div className='border-l-2 border-black h-full'>
             <p className='text-2xl font-bold p-4'>All Foods List</p>
             <div className='grid grid-cols-3 md:grid-cols-5 justify-items-center'>
                 <p className='px-1 mx-1'>Image</p>
