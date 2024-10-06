@@ -33,8 +33,8 @@ const Order = ({ url }) => {
 
     }, [])
     return (
-        <div className=''>
-            <h2 className='text-3xl  font-extrabold ml-3 mt-2'>Order List</h2>
+        <div className='border-l-2 border-black '>
+            <h2 className='text-3xl  font-extrabold ml-3 pt-4'>Order List</h2>
             <div className='order-list'>
                 {
                     orders.map(order => <div key={order._id} className='order-item ml-3'>

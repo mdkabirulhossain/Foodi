@@ -49,9 +49,9 @@ const Add = ({url}) => {
     }
     
     return (
-        <div className='add mx-2 '>
-            <form action="" onSubmit={onSubmitHandler}>
-                <div className='flex flex-col'>
+        <div className='add pt-4 border-l-2 border-black h-full'>
+            <form className='pl-4' action="" onSubmit={onSubmitHandler}>
+                <div className='flex flex-col '>
                     <label htmlFor="">Upload Image</label>
                     <label htmlFor="image">
                         {
