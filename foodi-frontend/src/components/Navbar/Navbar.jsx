@@ -32,7 +32,10 @@ const Navbar = ({setLogin}) => {
                     <p className='tooltip-text bg-white text-black'>sell your food</p>
                     </div>
                 <FaSearch></FaSearch>
+                <div className='basket-icon'>
                 <Link to="/cart"><FaBitbucket></FaBitbucket></Link> 
+                <div className="dot"></div>
+                </div>
                 
                 {!token? 
                 <div>
