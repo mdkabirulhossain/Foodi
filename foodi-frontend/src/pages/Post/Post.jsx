@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import "./Post.css"
+import './Post.css';
 import { IoIosCloudUpload } from "react-icons/io";
 import axios from 'axios'
 import { toast } from 'react-toastify';
-
 const Post = ({url}) => {
     //Add all the food do yourself
     const [image, setImage] = useState(false);
@@ -33,7 +32,7 @@ const Post = ({url}) => {
         formData.append("price", Number(data.price));
         formData.append("category", data.category);
         formData.append("image", image);
-        const response = await axios.post(`${url}/api/food/post`, formData);
+        const response = await axios.post(`${url}/api/food/add`, formData);
         if(response.data.success){
             setData({
                 name: "",
@@ -46,12 +45,13 @@ const Post = ({url}) => {
         }else{
             toast.error(response.data.message);
         }
+
     }
     
     return (
-        <div className='add mt-5 '>
-            <form action="" onSubmit={onSubmitHandler}>
-                <div className='flex flex-col'>
+        <div className='add pt-4  border-black '>
+            <form className='pl-4' action="" onSubmit={onSubmitHandler}>
+                <div className='flex flex-col '>
                     <label htmlFor="">Upload Image</label>
                     <label htmlFor="image">
                         {
@@ -75,11 +75,15 @@ const Post = ({url}) => {
                 </div>
                 <div className='flex gap-3 my-2'>
                     <label htmlFor="">Product category</label>
-                    <select  onChange={onChangeHandler} name='category' className='border'>
+                    <select value={data.category} onChange={onChangeHandler} name='category' className='border'>
                         <option value="Salad">Salad</option>
+                        <option value="Roll">Roll</option>
+                        <option value="Dessert">Dessert</option>
                         <option value="Cake">Cake</option>
                         <option value="Coffee">Coffee</option>
+                        <option value="Pasta">Pasta</option>
                         <option value="Pizza">Pizza</option>
+                        <option value="Lassi">Lassi</option>
                         <option value="Burger">Burger</option>
                         <option value="Juice">Juice</option>
                         <option value="Sandwich">Sandwich</option>
@@ -90,7 +94,7 @@ const Post = ({url}) => {
                     <label htmlFor="">Product price</label>
                     <input onChange={onChangeHandler} value={data.price} type="number" name="price" id="" placeholder='$' className='border p-1 rounded-md my-1' />
                 </div>
-                <button type='submit' className='w-full p-1 bg-orange-600 text-white rounded-md'>Request for Sell</button>
+                <button type='submit' className='w-full p-1 bg-orange-600 text-white rounded-md'>Add</button>
             </form>
         </div>
     );

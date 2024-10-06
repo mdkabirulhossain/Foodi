@@ -10,7 +10,7 @@ const FoodItem = ({ id, name, image, description, price }) => {
     const{cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
     return (
         <div className=''>
-            <div className='flex flex-col justify-center items-center border-2 bg-slate-200 shadow-md rounded-md mb-2'>
+            <div className=' flex flex-col justify-center items-center border-2 bg-slate-200 shadow-md rounded-md mb-2'>
                 <div className='image-container border-2 w-full h-40 '>
                     <img src={url+"/images/"+image} alt=""
                         className='w-full h-40 rounded-md'
